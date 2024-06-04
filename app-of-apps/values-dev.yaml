@@ -22,13 +22,9 @@ argocdApplications:
       disableServerSideApply: false
       wave: 9
       annotations: 
+        argocd-image-updater.argoproj.io/image-list: docker.io/bialekamir/argocd-image-updater:~0.1
+        argocd-image-updater.argoproj.io/marketingList.helm.image-spec: marketingList.image
 
-        argocd-image-updater.argoproj.io/image-list: '{{nameOverride}}={{image.repository}}:latest'
-        argocd-image-updater.argoproj.io/write-back-method: argocd
-        argocd-image-updater.argoproj.io/{{nameOverride}}.update-strategy: digest
-        argocd-image-updater.argoproj.io/{{nameOverride}}.force-update: 'true'
-        argocd-image-updater.argoproj.io/{{nameOverride}}.helm.image-name: '{{nameOverride}}={{image.repository}}:latest'
-        argocd-image-updater.argoproj.io/{{nameOverride}}.helm.image.tag: '{{image.tag}}'
 
 
     argocd-image-updater:
