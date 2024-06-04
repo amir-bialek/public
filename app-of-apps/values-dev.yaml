@@ -22,5 +22,4 @@ argocdApplications:
       disableServerSideApply: false
       wave: 9
       annotations: 
-        argocd-image-updater.argoproj.io/image-list: test=docker.io/bialekamir/argocd-image-updater
-        argocd-image-updater.argoproj.io/test.update-strategy: digest
+        argocd-image-updater.argoproj.io/image-list: docker.io/bialekamir/argocd-image-updater
