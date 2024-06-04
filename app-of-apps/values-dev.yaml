@@ -23,12 +23,8 @@ argocdApplications:
       wave: 9
       annotations: 
         argocd-image-updater.argoproj.io/write-back-method: argocd 
-
-        argocd-image-updater.argoproj.io/image-list: 'test=docker.io/bialekamir/argocd-image-updater:latest'
-        argocd-image-updater.argoproj.io/test.update-strategy: digest
-        argocd-image-updater.argoproj.io/test.force-update: 'true'
-        argocd-image-updater.argoproj.io/test.helm.image-name: 'test=docker.io/bialekamir/argocd-image-updater:latest'
-        argocd-image-updater.argoproj.io/test.helm.image.tag: 'latest'
+        argocd-image-updater.argoproj.io/image-list: 'docker.io/bialekamir/argocd-image-updater:latest'
+        argocd-image-updater.argoproj.io/test.update-strategy: latest
 
 
     argocd-image-updater:
