@@ -2,10 +2,6 @@ FROM ubuntu:jammy
 
 WORKDIR /app
 
-RUN mkdir test
-
-RUN touch test.txt
-RUN touch me.txt
-
+RUN touch latest-check
 
 ENTRYPOINT ["tail", "-f", "/dev/null"]
