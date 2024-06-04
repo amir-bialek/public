@@ -34,5 +34,3 @@ argocdApplications:
       disableServerSideApply: false
       wave: 8
       annotations: {}
-      additionalValuesFiles:
-        - values-add.yaml
