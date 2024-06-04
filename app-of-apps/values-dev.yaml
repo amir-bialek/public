@@ -23,12 +23,12 @@ argocdApplications:
       wave: 9
       annotations: 
 
-        argocd-image-updater.argoproj.io/image-list: myalias=docker.io/bialekamir/argocd-image-updater:latest
-        argocd-image-updater.argoproj.io/write-back-method: argocd 
-        argocd-image-updater.argoproj.io/myalias.update-strategy: digest
-        argocd-image-updater.argoproj.io/myalias.force-update: 'true'
-        argocd-image-updater.argoproj.io/myalias.helm.image-name: myalias=docker.io/bialekamir/argocd-image-updater:latest
-        argocd-image-updater.argoproj.io/myalias.helm.image.tag: latest
+        argocd-image-updater.argoproj.io/image-list: '{{nameOverride}}={{image.repository}}:latest'
+        argocd-image-updater.argoproj.io/write-back-method: argocd
+        argocd-image-updater.argoproj.io/{{nameOverride}}.update-strategy: digest
+        argocd-image-updater.argoproj.io/{{nameOverride}}.force-update: 'true'
+        argocd-image-updater.argoproj.io/{{nameOverride}}.helm.image-name: '{{nameOverride}}={{image.repository}}:latest'
+        argocd-image-updater.argoproj.io/{{nameOverride}}.helm.image.tag: '{{image.tag}}'
 
 
     argocd-image-updater:
