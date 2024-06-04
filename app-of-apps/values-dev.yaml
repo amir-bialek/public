@@ -22,8 +22,7 @@ argocdApplications:
       disableServerSideApply: false
       wave: 9
       annotations: {}
-      additionalValuesFiles:
-        - values-add.yaml
+
 
     argocd-image-updater:
       disableAutomated: true
