@@ -22,17 +22,5 @@ argocdApplications:
       disableServerSideApply: false
       wave: 9
       annotations: 
-        argocd-image-updater.argoproj.io/image-list: docker.io/bialekamir/argocd-image-updater:~0.1
-        argocd-image-updater.argoproj.io/marketingList.helm.image-spec: marketingList.image
-
-
-
-    argocd-image-updater:
-      disableAutomated: true
-      disableFinalizer: false
-      disable: false
-      name: argocd-image-updater
-      namespace: argocd
-      disableServerSideApply: false
-      wave: 8
-      annotations: {}
+        argocd-image-updater.argoproj.io/image-list: test=docker.io/bialekamir/argocd-image-updater
+        argocd-image-updater.argoproj.io/test.update-strategy: digest
