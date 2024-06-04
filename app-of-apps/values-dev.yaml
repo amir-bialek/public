@@ -24,7 +24,7 @@ argocdApplications:
       annotations: 
         argocd-image-updater.argoproj.io/write-back-method: argocd 
         argocd-image-updater.argoproj.io/image-list: 'docker.io/bialekamir/argocd-image-updater:latest'
-        argocd-image-updater.argoproj.io/test.update-strategy: latest
+        argocd-image-updater.argoproj.io/update-strategy: latest
 
 
     argocd-image-updater:
