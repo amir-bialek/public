@@ -8,7 +8,7 @@ global:
       server: https://kubernetes.default.svc
       namespace: default
     source:
-      repoURL:  https://github.com/imagry/k8s
+      repoURL:  https://github.com/amir-bialek/public
       targetRevision: HEAD
 
 argocdApplications:

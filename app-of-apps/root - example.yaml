@@ -11,7 +11,7 @@ spec:
     project: default
   source:
     path: app-of-apps
-    repoURL: 'https://github.com/BialekA/public'
+    repoURL: 'https://github.com/amir-bialek/public'
     targetRevision: main
     helm:
       valueFiles:
