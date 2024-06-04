@@ -21,7 +21,9 @@ argocdApplications:
       namespace: test
       disableServerSideApply: false
       wave: 9
-      annotations: {}
+      annotations: 
+        - argocd-image-updater.argoproj.io/write-back-method: argocd 
+        - argocd-image-updater.argoproj.io/image-list: nginx:latest
 
 
     argocd-image-updater:
