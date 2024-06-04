@@ -1,0 +1,38 @@
+global:
+  path: "dev"
+  env: dev
+  defaultValuesFile: values.yaml
+  spec:
+    project: default
+    destination:
+      server: https://kubernetes.default.svc
+      namespace: default
+    source:
+      repoURL:  https://github.com/imagry/k8s
+      targetRevision: HEAD
+
+argocdApplications:
+  github-runners:
+    test:
+      disableAutomated: true
+      disableFinalizer: false
+      disable: false
+      name: test
+      namespace: test
+      disableServerSideApply: false
+      wave: 9
+      annotations: {}
+      additionalValuesFiles:
+        - values-add.yaml
+
+    argocd-image-updater:
+      disableAutomated: true
+      disableFinalizer: false
+      disable: false
+      name: argocd-image-updater
+      namespace: argocd
+      disableServerSideApply: false
+      wave: 8
+      annotations: {}
+      additionalValuesFiles:
+        - values-add.yaml

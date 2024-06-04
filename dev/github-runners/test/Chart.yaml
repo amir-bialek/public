@@ -1,0 +1,11 @@
+apiVersion: v2
+appVersion: 1.16.0
+dependencies:
+dependencies:
+- name: library
+  version: 1.0.3
+  repository: file://../../../library
+description: A Helm template for micro services in Kubernetes
+name: template
+type: application
+version: 2.0.1

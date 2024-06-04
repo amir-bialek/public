@@ -1,0 +1,25 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: argocd-dev
+  namespace: argocd
+spec:
+  destination:
+    name: ''
+    namespace: argocd
+    server: 'https://kubernetes.default.svc'
+    project: default
+  source:
+    path: app-of-apps
+    repoURL: 'https://github.com/BialekA/public'
+    targetRevision: main
+    helm:
+      valueFiles:
+        - values-dev.yaml
+  sources: []
+  project: default
+  syncPolicy:
+    automated:
+      selfHeal: true
+
+

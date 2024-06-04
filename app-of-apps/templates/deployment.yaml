@@ -1,0 +1,71 @@
+{{- range $folder, $values := .Values.argocdApplications -}}
+{{- range $app, $value := $values -}}
+{{ if not .disable }}
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  {{- if .kind }}
+  name: {{ .name }}-{{ .kind }}-{{ $.Values.global.env }}
+  {{- else }}
+  name: {{ .name }}-{{ $.Values.global.env }}
+  {{- end }}
+  namespace: argocd
+  {{- if not .disableFinalizer }}
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+  {{- end }}
+  annotations:
+    argocd.argoproj.io/sync-wave: "{{ .wave }}"
+    {{- if and .annotations (gt (len .annotations) 0) }}
+    {{ toYaml .annotations | nindent 4 }}
+    {{- end }}
+spec:
+  project: {{ $.Values.global.spec.project }}
+  source:
+    repoURL:  {{ $.Values.global.spec.source.repoURL }}
+    targetRevision: {{ default $.Values.global.spec.source.targetRevision .targetRevision }}
+    path: {{ $.Values.global.path }}/{{ $folder }}/{{ .name }}
+    helm:
+      valueFiles:
+      - {{ $.Values.global.defaultValuesFile }}
+      {{- range .additionalValuesFiles }}
+      - {{ . }}
+      {{- end }}
+      {{- if .parameters }}
+      parameters:
+      {{- range .parameters }}
+      - name: {{ .name}}
+        value: {{ .value }}
+      {{- end }}
+      {{- end }}
+  destination:
+    namespace: {{ default $.Values.global.spec.destination.namespace  .namespace }}
+    server: {{ $.Values.global.spec.destination.server }}
+  syncPolicy:
+    {{- if not .disableAutomated }}
+    automated:
+      prune: true
+      selfHeal: true
+    {{- end }}
+    syncOptions:
+      - RespectIgnoreDifferences=true
+      - CreateNamespace=true
+      {{- if not .disableServerSideApply }}
+      - ServerSideApply=true
+      {{- end }}
+  {{- if .ignoreDifferences }}
+  ignoreDifferences:
+    {{- range .ignoreDifferences }}
+    - jsonPointers:
+      {{- range .jsonPointers }}
+        - {{ . }}
+      {{- end }}
+      kind: {{ .kind}}
+      name: {{ .name}}
+      group: "*"
+    {{- end }}
+  {{- end }}
+---
+{{- end }}
+{{- end }}
+{{- end }}

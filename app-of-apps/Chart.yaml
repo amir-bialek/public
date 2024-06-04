@@ -1,0 +1,31 @@
+apiVersion: v2
+name: app-of-apps
+description: "Second version of robust app-of-apps chart. this chart creates multiple argocd applications resources.
+  It supports multiple chart instances of the same actual chart. If you want multiple kinds of chart, you can add 'kind' value to each chart section in the values.yaml.
+  For example: add two chart sections to values.yaml sftp-file-manager-dap & sftp-file-manager-supplier,
+  to dap section add field 'kind: dap' and to supplier section add field 'kind: supplier', this will lead to a result where there is 2 deployments of sftp-file-manager.
+  This version also support changing helm chart values. For example: add 'parameter' field to chart section in values.yaml:
+  parameters:
+  - name: .change.this.value
+    value: new_value"
+
+# A chart can be either an 'application' or a 'library' chart.
+#
+# Application charts are a collection of templates that can be packaged into versioned archives
+# to be deployed.
+#
+# Library charts provide useful utilities or functions for the chart developer. They're included as
+# a dependency of application charts to inject those utilities and functions into the rendering
+# pipeline. Library charts do not define any templates and therefore cannot be deployed.
+type: application
+
+# This is the chart version. This version number should be incremented each time you make changes
+# to the chart and its templates, including the app version.
+# Versions are expected to follow Semantic Versioning (https://semver.org/)
+version: 0.3.0
+
+# This is the version number of the application being deployed. This version number should be
+# incremented each time you make changes to the application. Versions are not expected to
+# follow Semantic Versioning. They should reflect the version the application is using.
+# It is recommended to use it with quotes.
+appVersion: "1.16.0"
