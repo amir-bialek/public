@@ -23,7 +23,7 @@ argocdApplications:
       wave: 9
       annotations: 
         argocd-image-updater.argoproj.io/write-back-method: argocd 
-        argocd-image-updater.argoproj.io/image-list: 'docker.io/bialekamir/argocd-image-updater:1.x.x'
+        argocd-image-updater.argoproj.io/image-list: 'docker.io/bialekamir/argocd-image-updater:1.1.x'
 
 
     argocd-image-updater:
