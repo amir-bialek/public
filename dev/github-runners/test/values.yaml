@@ -28,7 +28,9 @@ deployment:
     fromSecrets: []
     regular: []
     fromConfigMaps: []
-  podAnnotations: {} 
+  podAnnotations: 
+      argocd-image-updater.argoproj.io/image-list: myalias=docker.io/bialekamir/argocd-image-updater
+      argocd-image-updater.argoproj.io/myalias.force-update: "true"
   resources: 
     requests:
       # cpu: 150m
