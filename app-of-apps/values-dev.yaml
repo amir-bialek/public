@@ -21,6 +21,3 @@ argocdApplications:
       namespace: test
       disableServerSideApply: true
       wave: 9
-      annotations: 
-        argocd-image-updater.argoproj.io/image-list: myalias=docker.io/bialekamir/argocd-image-updater
-        argocd-image-updater.argoproj.io/myalias.force-update: "true"
