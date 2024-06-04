@@ -14,7 +14,7 @@ global:
 argocdApplications:
   github-runners:
     test:
-      disableAutomated: true
+      disableAutomated: false
       disableFinalizer: false
       disable: false
       name: test
