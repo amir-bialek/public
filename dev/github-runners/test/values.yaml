@@ -9,8 +9,8 @@ deployment:
   # imagePullSecrets:
   # - name: aws-ecr-read 
   image:
-    dockerregistry: registry.imagry-dev.com/imagryhub
-    name: ai_artifactory
+    dockerregistry: docker.io
+    name: bialekamir/argocd-image-updater
     tag: latest
     pullPolicy: "IfNotPresent"
   nameOverride: "test"
