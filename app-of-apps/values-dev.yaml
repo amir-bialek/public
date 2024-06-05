@@ -37,4 +37,4 @@ argocdApplications:
         argocd-image-updater.argoproj.io/image-list: ai=docker.io/bialekamir/argocd-image-updater
         argocd-image-updater.argoproj.io/ai.helm.image-tag: ai.deployment.image.tag
         argocd-image-updater.argoproj.io/ai.helm.image-name: ai.deployment.image.name
-        # argocd-image-updater.argoproj.io/ai.update-strategy: digest
+        argocd-image-updater.argoproj.io/ai.update-strategy: digest
