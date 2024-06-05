@@ -26,7 +26,7 @@ argocdApplications:
         - values-add.yaml
 
     test:
-      disableAutomated: true
+      disableAutomated: false
       disableFinalizer: false
       disable: false
       name: test
