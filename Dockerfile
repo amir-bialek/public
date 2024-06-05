@@ -2,6 +2,8 @@ FROM ubuntu:jammy
 
 WORKDIR /app
 
-RUN touch latest-check
+RUN touch IAMNEW.txt
+
+
 
 ENTRYPOINT ["tail", "-f", "/dev/null"]
