@@ -22,7 +22,8 @@ argocdApplications:
       namespace: argocd
       disableServerSideApply: true
       wave: 9
-
+      additionalValuesFiles:
+        - values-add.yaml
 
     test:
       disableAutomated: true
