@@ -34,6 +34,6 @@ argocdApplications:
       disableServerSideApply: true
       wave: 9
       annotations: 
-        argocd-image-updater.argoproj.io/image-list: ai=bialekamir/argocd-image-updater:latest
+        argocd-image-updater.argoproj.io/image-list: ai=docker.io/bialekamir/argocd-image-updater:latest
         argocd-image-updater.argoproj.io/ai.helm.image-tag: deployment.image.tag
         argocd-image-updater.argoproj.io/ai.update-strategy: digest
