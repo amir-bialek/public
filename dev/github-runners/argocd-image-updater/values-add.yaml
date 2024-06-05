@@ -1,0 +1,7 @@
+# config:
+#   registries:
+#     - name: My Registry
+#       prefix: registry.imagry.dev
+#       api_url: http://registry.imagry.dev
+#       default: true
+#       insecure: yes

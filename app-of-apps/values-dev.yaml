@@ -13,8 +13,19 @@ global:
 
 argocdApplications:
   github-runners:
+
+    argocd-image-updater:
+      disableAutomated: true
+      disableFinalizer: false
+      disable: false
+      name: argocd-image-updater
+      namespace: argocd
+      disableServerSideApply: true
+      wave: 9
+
+
     test:
-      disableAutomated: false
+      disableAutomated: true
       disableFinalizer: false
       disable: false
       name: test
