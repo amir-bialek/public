@@ -1,0 +1,28 @@
+artifactory:
+
+  autoscaling:
+    enabled: false
+    minReplicas: 3
+    maxReplicas: 3
+
+  nginx:
+    enabled: false
+
+
+  nameOverride: artifactory
+  fullnameOverride: artifactory
+  artifactory:
+    persistence:
+      size: 50Gi
+    resources:
+      requests:
+        memory: "1Gi"
+        cpu: "500m"
+      limits:
+        memory: "4Gi"
+        cpu: "1"
+  postgresql:
+    enabled: false
+
+postgresql:
+  enabled: false

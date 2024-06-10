@@ -1,0 +1,11 @@
+# grafana:
+#   ingress:
+#     enabled: true
+#     ingressClassName: internal
+#     annotations: {}
+#     hosts: 
+#       - ee-grafana.mprest.co
+#     tls:
+#       - secretName: mprest-tls
+#         hosts:
+#         - ee-grafana.mprest.co

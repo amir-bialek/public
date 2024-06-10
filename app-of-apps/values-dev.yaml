@@ -13,27 +13,38 @@ global:
 
 argocdApplications:
   github-runners:
-
-    argocd-image-updater:
-      disableAutomated: true
-      disableFinalizer: false
-      disable: false
-      name: argocd-image-updater
-      namespace: argocd
-      disableServerSideApply: true
-      wave: 9
-      additionalValuesFiles:
-        - values-add.yaml
-
     test:
-      disableAutomated: false
+      disableAutomated: true
       disableFinalizer: false
       disable: false
       name: test
       namespace: test
       disableServerSideApply: true
       wave: 9
-      annotations: 
-        argocd-image-updater.argoproj.io/image-list: ai=docker.io/bialekamir/argocd-image-updater:latest
-        argocd-image-updater.argoproj.io/ai.helm.image-tag: deployment.image.tag
-        argocd-image-updater.argoproj.io/ai.update-strategy: digest
+
+    loki-stack:
+      disableAutomated: true
+      disableFinalizer: false
+      disable: false
+      name: loki-stack
+      namespace: monitoring
+      disableServerSideApply: true
+      wave: 9
+
+    kube-prometheus-stack:
+      disableAutomated: true
+      disableFinalizer: false
+      disable: false
+      name: kube-prometheus-stack
+      namespace: monitoring
+      disableServerSideApply: true
+      wave: 9
+
+    artifactory-cpp-ce:
+      disableAutomated: true
+      disableFinalizer: false
+      disable: false
+      name: artifactory-cpp-ce
+      namespace: default
+      disableServerSideApply: true
+      wave: 9

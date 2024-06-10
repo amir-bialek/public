@@ -1,0 +1,13 @@
+kube-prometheus-stack:
+
+- need secret grafana:
+apiVersion: v1
+data:
+  admin-user: <some user>
+  admin-password: <some password>
+kind: Secret
+metadata:
+  name: grafana
+type: Opaque
+
+- Change the cluster name under commonValue: &clusterName development.

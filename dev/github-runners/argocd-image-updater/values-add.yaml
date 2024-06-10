@@ -1,9 +1,0 @@
-config:
-  logLevel: "trace"
-
-  registries:
-    - name: My Registry
-      prefix: docker.io
-      api_url: http://registry.imagry.dev
-      default: true
-      insecure: yes
