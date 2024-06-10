@@ -4,7 +4,6 @@ fullnameOverride: "prometheus"
 alertmanager:
   enabled: false
     
-commonValue: &clusterName imagry.dev
 
 prometheus:    
   prometheusSpec:
