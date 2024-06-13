@@ -30,6 +30,8 @@ argocdApplications:
       namespace: monitoring
       disableServerSideApply: true
       wave: 9
+      additionalValuesFiles:
+        - values-add.yaml
 
     kube-prometheus-stack:
       disableAutomated: true
@@ -39,6 +41,8 @@ argocdApplications:
       namespace: monitoring
       disableServerSideApply: true
       wave: 9
+      additionalValuesFiles:
+        - values-add.yaml
 
     artifactory-cpp-ce:
       disableAutomated: true
@@ -48,3 +52,5 @@ argocdApplications:
       namespace: default
       disableServerSideApply: true
       wave: 9
+      additionalValuesFiles:
+        - values-add.yaml
