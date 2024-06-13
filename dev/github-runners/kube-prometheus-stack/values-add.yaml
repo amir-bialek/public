@@ -4,3 +4,6 @@ fullnameOverride: "prometheus"
 alertmanager:
   enabled: false
     
+prometheusOperator:
+  service:
+    type: NodePort
