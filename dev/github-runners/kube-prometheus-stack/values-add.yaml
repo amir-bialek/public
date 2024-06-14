@@ -4,3 +4,30 @@ fullnameOverride: "prometheus"
 alertmanager:
   enabled: false
     
+commonValue: &clusterName imagry.dev
+
+prometheus:    
+  prometheusSpec:
+    retention: 7d
+    retentionSize: 5GB
+    storageSpec:
+      volumeClaimTemplate:
+        spec:
+          storageClassName: local-path
+          resources:
+            requests:
+              storage: 50Gi
+          accessModes:
+            - ReadWriteOnce
+
+grafana: 
+  persistence:
+    type: pvc
+    enabled: true
+    storageClassName: local-path
+    accessModes:
+      - ReadWriteOnce
+    size: 10Gi
+
+  fullnameOverride: "grafana"
+  nameOverride: "grafana"
