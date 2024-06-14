@@ -39,7 +39,7 @@ argocdApplications:
       disable: false
       name: kube-prometheus-stack
       namespace: monitoring
-      disableServerSideApply: true
+      disableServerSideApply: false
       wave: 9
       additionalValuesFiles:
         - values-add.yaml
