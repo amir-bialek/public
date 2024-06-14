@@ -41,6 +41,7 @@ argocdApplications:
       namespace: monitoring
       disableServerSideApply: false
       wave: 9
+      annotations: {}
       additionalValuesFiles:
         - values-add.yaml
 
