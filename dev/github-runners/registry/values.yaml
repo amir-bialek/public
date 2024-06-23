@@ -1,0 +1,118 @@
+# Deployment
+deployment:
+  enabled: true
+  command: []
+  name: registry
+  labels: 
+    app: registry
+  image:
+    dockerregistry: docker.io
+    name: registry
+    tag: 2.8.3
+    pullPolicy: "IfNotPresent"
+  nameOverride: "registry"
+  fullnameOverride: "registry"
+  replicasCount: 1
+  autoscaling:
+    enabled: false
+  volumes:
+    fromSecrets: []
+    # - secretName: registry-secret
+      # mountPath: /certs
+      # readOnly: true
+    fromConfigMaps: []
+    fromPvc:
+    - pvcName: registry-pvc
+      mountPath: /var/lib/registry
+    fromNFS: []
+    emptyDir: []
+  env:
+    fromSecrets: []
+    regular: []
+    fromConfigMaps: []
+  podAnnotations: {} 
+  resources: 
+    requests:
+      # cpu: 150m
+      # memory: 500Mi
+    limits:
+      # cpu: 1000m
+      # memory: 4Gi  
+  podSecurityContext: {}
+  containerSecurityContext: {} 
+  readiness:
+    openContainerPort: false
+    openServicePort: false
+    includeReadinessProbe: false
+  liveness:
+    includeLivenessProbe: false
+  nodeSelector:   
+    kubernetes.io/hostname: worker2
+  tolerations: []
+  affinity:
+    podSelfAntiAffinity:
+      enabled: false
+    nodeAffinity:
+      enabled: false
+  revisionHistoryLimit: 3
+
+# Service
+service:
+  enabled: true
+  services:
+  - name: registry-svc
+    annotations: {}
+    labels: {}    
+    enableProbePort: true  
+    type: ClusterIP
+    ports: 
+    - name: service-port
+      protocol: TCP
+      port: 5000
+      targetPort: 5000
+    selectDeployment: true
+    selector: {}
+
+
+networkpolicy:
+  enabled: false
+
+serviceAccount:
+  enabled: false
+
+configMaps:
+  enabled: false
+
+secrets:
+  enabled: false
+
+storageClass:
+  enabled: false
+
+pvc:
+  ## @param .pvc.enabled
+  # -- Whether to create the Persistent Volume Claim (PVC) (Required).
+  enabled: true
+  pvc:
+    - name: "registry-pvc"
+    ## @param .pvc.accessModes
+    # -- accessModes of PVC (Required).
+      accessModes: 
+      - ReadWriteOnce
+      ## @param .pvc.storage
+      # -- Storage size of PVC (Required).
+      storage: 10Gi
+      ## @param .pvc.volumeMode
+      # -- volumeMode of PVC (Required).
+      volumeMode: Filesystem
+      ## @param .pvc.storageClassName
+      # -- storageClassName of PVC (Required).
+      storageClassName: local-path
+
+ingress:
+  enabled: false
+
+job:
+  enabled: false
+
+

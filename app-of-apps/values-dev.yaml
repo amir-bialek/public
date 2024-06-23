@@ -55,3 +55,25 @@ argocdApplications:
       wave: 9
       additionalValuesFiles:
         - values-add.yaml
+
+    registry:
+      disableAutomated: true
+      disableFinalizer: false
+      disable: false
+      name: registry
+      namespace: default
+      disableServerSideApply: true
+      wave: 9
+      # additionalValuesFiles:
+      #   - values-add.yaml
+
+    registry-ui:
+      disableAutomated: true
+      disableFinalizer: false
+      disable: false
+      name: registry-ui
+      namespace: default
+      disableServerSideApply: true
+      wave: 9
+      additionalValuesFiles:
+        - values-add.yaml

@@ -1,0 +1,107 @@
+# Deployment
+deployment:
+  enabled: true
+  command: []
+  name: registry-ui
+  labels: 
+    app: registry-ui
+  image:
+    dockerregistry: docker.io
+    name: joxit/docker-registry-ui
+    tag: main
+    pullPolicy: "Always"
+  nameOverride: "registry-ui"
+  fullnameOverride: "registry-ui"
+  replicasCount: 1
+  autoscaling:
+    enabled: false
+  volumes:
+    fromSecrets: []
+    fromConfigMaps: []
+    fromPvc: []
+    fromNFS: []
+    emptyDir: []
+  env:
+    fromSecrets: []
+    regular: 
+      SINGLE_REGISTRY: false
+      REGISTRY_TITLE: Just for testing
+      DELETE_IMAGES: true
+      SHOW_CONTENT_DIGEST: false
+      NGINX_PROXY_PASS_URL: http://registry-svc:5000
+      SHOW_CATALOG_NB_TAGS: true
+      CATALOG_MIN_BRANCHES: 1
+      CATALOG_MAX_BRANCHES: 1
+      TAGLIST_PAGE_SIZE: 100
+      REGISTRY_SECURED: false
+      CATALOG_ELEMENTS_LIMIT: 1000
+    fromConfigMaps: []
+  podAnnotations: {} 
+  resources: 
+    requests:
+      # cpu: 150m
+      # memory: 500Mi
+    limits:
+      # cpu: 1000m
+      # memory: 4Gi  
+  podSecurityContext: {}
+  containerSecurityContext: {} 
+  readiness:
+    openContainerPort: false
+    openServicePort: false
+    includeReadinessProbe: false
+  liveness:
+    includeLivenessProbe: false
+  nodeSelector: 
+    kubernetes.io/hostname: worker2
+  tolerations: []
+  affinity:
+    podSelfAntiAffinity:
+      enabled: false
+    nodeAffinity:
+      enabled: false
+  revisionHistoryLimit: 3
+
+# Service
+service:
+  enabled: true
+  services:
+  - name: registry-ui
+    annotations: {}
+    labels: {}    
+    enableProbePort: true  
+    type: ClusterIP
+    ports: 
+    - name: service-port
+      protocol: TCP
+      port: 80
+      targetPort: 80
+    selectDeployment: true
+    selector: {}
+
+
+networkpolicy:
+  enabled: false
+
+serviceAccount:
+  enabled: false
+
+configMaps:
+  enabled: false
+
+secrets:
+  enabled: false
+
+storageClass:
+  enabled: false
+
+pvc:
+  enabled: false
+
+ingress:
+  enabled: false
+
+job:
+  enabled: false
+
+
