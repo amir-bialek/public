@@ -75,5 +75,5 @@ argocdApplications:
       namespace: default
       disableServerSideApply: true
       wave: 9
-      additionalValuesFiles:
-        - values-add.yaml
+      # additionalValuesFiles:
+      #   - values-add.yaml
