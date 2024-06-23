@@ -66,17 +66,29 @@ deployment:
 service:
   enabled: true
   services:
+  # - name: registry-ui
+  #   annotations: {}
+  #   labels: {}    
+  #   enableProbePort: true  
+  #   type: ClusterIP
+  #   ports: 
+  #   - name: service-port
+  #     protocol: TCP
+  #     port: 80
+  #     targetPort: 80
+  #   selectDeployment: true
+  #   selector: {}
+
   - name: registry-ui
-    annotations: {}
-    labels: {}    
-    enableProbePort: true  
-    type: ClusterIP
+    type: NodePort
+    enableProbePort: true
     ports: 
     - name: service-port
       protocol: TCP
       port: 80
       targetPort: 80
-    selectDeployment: true
+      nodePort: 30007
+    selectDeployment: false
     selector: {}
 
 
