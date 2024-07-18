@@ -1,2 +1,5 @@
-print("This line will be printed.")
-return "Hello, World! - task2"
+def main():
+    print("hello here")
+
+if __name__ == "__main__":
+    main()
